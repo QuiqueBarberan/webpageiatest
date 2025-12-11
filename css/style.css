@@ -9,7 +9,7 @@
     content: '';
     position: absolute;
     width: 6px;
-    background-color: #0d6efd;
+    background-color: #b84901;
     top: 0;
     bottom: 0;
     left: 50%;
@@ -17,6 +17,8 @@
 }
 
 .timeline-container {
+    border-radius: 25px;
+
     padding: 10px 40px;
     position: relative;
     background-color: inherit;
@@ -38,7 +40,7 @@
     height: 25px;
     right: -12px;
     background-color: white;
-    border: 4px solid #0d6efd;
+    border: 4px solid #b84901;
     top: 15px;
     border-radius: 50%;
     z-index: 1;
