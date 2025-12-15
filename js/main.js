@@ -42,32 +42,22 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 
 	form.addEventListener('submit', function (e) {
-		e.preventDefault();
+		// Log para depuración: confirmar que el handler se ejecuta y a qué action se enviará
+		console.log('contactForm submit handler fired — action:', form.action);
 
-		// Usar validación nativa del navegador
+		// Usar validación nativa del navegador; si no pasa, cancelar el envío
 		if (!form.reportValidity()) {
+			e.preventDefault();
+			console.log('contactForm: reportValidity failed — cancelando envío');
 			return;
 		}
 
+		// Actualizar la vista previa antes de enviar
 		updatePreview();
 
-		const ageDisplay = formatAge(els.ageRange.value);
-		const subjectText = `Contacto: ${els.subject.value || 'Sin asunto'}`;
-		const bodyLines = [
-			`Nombre: ${els.name.value || ''}`,
-			`Correo: ${els.email.value || ''}`,
-			`Género: ${els.gender.value || ''}`,
-			`Edad: ${ageDisplay}`,
-			`Teléfono: ${els.phone.value || ''}`,
-			`Asunto: ${els.subject.value || ''}`,
-			`Mensaje: ${els.message.value || ''}`,
-			`Boletín: ${els.newsletter.checked ? 'Sí' : 'No'}`,
-		];
-
-		const mailto = `mailto:quiquecillo86@gmail.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
-
-		// Abrir cliente de correo del usuario con los datos (demostración)
-		window.location.href = mailto;
+		// Dejar que el navegador realice el envío al `action` del formulario (Formspree).
+		// No hacer `preventDefault()` ni redirecciones aquí.
+		console.log('contactForm: valid — permitiendo envío al endpoint');
 	});
 
 	// Inicializar vista previa

@@ -43,30 +43,30 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <p class="lead text-center">Si tienes alguna pregunta, sugerencia o simplemente quieres saludar, no dudes en enviarme un mensaje. Ten en cuenta que este es un formulario de demostración y no envía correos electrónicos.</p>
-                <form id="contactForm">
+                <form id="contactForm" action="https://formspree.io/f/mpwvejvv" method="POST">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="name" required>
+                        <input type="text" class="form-control" id="name" name="name" required>
                         <div class="invalid-feedback">Por favor, introduce tu nombre.</div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="email" required>
+                        <input type="email" class="form-control" id="email" name="_replyto" required>
                         <div class="invalid-feedback">Introduce un correo electrónico válido.</div>
                     </div>
                     <div class="mb-3">
                         <label for="subject" class="form-label">Asunto</label>
-                        <input type="text" class="form-control" id="subject">
+                        <input type="text" class="form-control" id="subject" name="subject">
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label">Teléfono</label>
-                        <input type="tel" class="form-control" id="phone" placeholder="+34 600 000 000" pattern="\+?\d{7,15}">
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="+34 600 000 000" pattern="\+?\d{7,15}">
                         <div class="form-text">Ejemplo: +34600111222 (opcional)</div>
                         <div class="invalid-feedback">Introduce un teléfono válido (7-15 dígitos, puede llevar +).</div>
                     </div>
                     <div class="mb-3">
                         <label for="gender" class="form-label">Género</label>
-                        <select class="form-select" id="gender" aria-label="Género" required>
+                        <select class="form-select" id="gender" name="gender" aria-label="Género" required>
                             <option value="" selected disabled>Selecciona...</option>
                             <option value="Masculino">Masculino</option>
                             <option value="Femenino">Femenino</option>
@@ -76,18 +76,20 @@
                     </div>
                     <div class="mb-3">
                         <label for="ageRange" class="form-label">Edad: <span id="ageValue">30</span></label>
-                        <input type="range" class="form-range" min="20" max="65" id="ageRange" value="30" required>
+                        <input type="range" class="form-range" min="20" max="65" id="ageRange" name="age" value="30" required>
                         <div class="invalid-feedback">Selecciona tu edad.</div>
                         <div class="form-text">Arrastra para seleccionar tu edad. Si seleccionas 65 se mostrará "+65".</div>
                     </div>
                     <div class="mb-3">
                         <label for="message" class="form-label">Mensaje</label>
-                        <textarea class="form-control" id="message" rows="5" required></textarea>
+                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                     </div>
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="newsletter">
+                        <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter" value="si">
                         <label class="form-check-label" for="newsletter">Suscribirme al boletín</label>
                     </div>
+
+                    <input type="hidden" name="_next" value="gracias.html">
 
                     <hr>
                     <h5>Resumen (vista previa)</h5>
@@ -117,7 +119,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script src="js/main.js"></script>
+    <!-- Custom JS (cache-busted) -->
+    <script src="js/main.js?v=2"></script>
 </body>
 </html>
