@@ -81,6 +81,12 @@
                         <div class="form-text">Arrastra para seleccionar tu edad. Si seleccionas 65 se mostrará "+65".</div>
                     </div>
                     <div class="mb-3">
+                        <label for="budgetRange" class="form-label">Presupuesto: <span id="budgetValue">250€</span></label>
+                        <input type="range" class="form-range" min="250" max="2000" step="50" id="budgetRange" name="budget_raw" value="250">
+                        <input type="hidden" id="budget" name="budget" value="250€">
+                        <div class="form-text">Selecciona tu presupuesto (250€ — 2000€ o más). Si llegas a 2000 se enviará como "2000€+".</div>
+                    </div>
+                    <div class="mb-3">
                         <label for="message" class="form-label">Mensaje</label>
                         <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                     </div>
@@ -101,6 +107,7 @@
                         <p><strong>Asunto:</strong> <span id="pv-subject">—</span></p>
                         <p><strong>Teléfono:</strong> <span id="pv-phone">—</span></p>
                         <p><strong>Mensaje:</strong> <span id="pv-message">—</span></p>
+                        <p><strong>Presupuesto:</strong> <span id="pv-budget">—</span></p>
                         <p><strong>Boletín:</strong> <span id="pv-news">—</span></p>
                     </div>
 
