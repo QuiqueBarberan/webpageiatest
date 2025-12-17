@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		gender: document.getElementById('gender'),
 		ageRange: document.getElementById('ageRange'),
 		ageValue: document.getElementById('ageValue'),
+		budgetRange: document.getElementById('budgetRange'),
+		budgetValue: document.getElementById('budgetValue'),
+		budgetHidden: document.getElementById('budget'),
 		subject: document.getElementById('subject'),
 		phone: document.getElementById('phone'),
 		message: document.getElementById('message'),
@@ -19,9 +22,19 @@ document.addEventListener('DOMContentLoaded', function () {
 		return Number(v) === 65 ? '+65' : String(v);
 	}
 
+	function formatBudget(v) {
+		const n = Number(v);
+		if (n >= 2000) return '2000€+';
+		return new Intl.NumberFormat('es-ES', {maximumFractionDigits: 0}).format(n) + '€';
+	}
+
 	function updatePreview() {
 		const ageDisplay = formatAge(els.ageRange.value);
 		els.ageValue.textContent = ageDisplay;
+
+		const budgetDisplay = formatBudget(els.budgetRange ? els.budgetRange.value : (els.budgetHidden ? els.budgetHidden.value : 250));
+		if (els.budgetValue) els.budgetValue.textContent = budgetDisplay;
+		if (els.budgetHidden) els.budgetHidden.value = budgetDisplay;
 
 		document.getElementById('pv-name').textContent = els.name.value || '—';
 		document.getElementById('pv-email').textContent = els.email.value || '—';
@@ -30,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		document.getElementById('pv-subject').textContent = els.subject.value || '—';
 		document.getElementById('pv-phone').textContent = els.phone.value || '—';
 		document.getElementById('pv-message').textContent = els.message.value || '—';
+		document.getElementById('pv-budget').textContent = budgetDisplay || '—';
 		document.getElementById('pv-news').textContent = els.newsletter.checked ? 'Sí' : 'No';
 	}
 
